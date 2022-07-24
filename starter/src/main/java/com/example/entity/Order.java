@@ -30,10 +30,9 @@ public class Order {
     return commodity;
   }
 
-  public void addCommodity(Bread bread) {
+  public void addCommodity(Bread bread) throws Exception {
     commodity.add(bread);
     this.setMoney(this.money+bread.getPrice());
-    this.commodity = commodity;
   }
 
   public double getMoney() {
