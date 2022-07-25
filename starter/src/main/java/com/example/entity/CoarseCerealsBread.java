@@ -48,11 +48,10 @@ public class CoarseCerealsBread extends Bread{
   public void setState() {
     //用时间戳来计算是否过期
     //当前时间-生产时间-保质期>=0 表示过期了
-    System.out.println(new Date().getDay() + " " + this.createDate.getDay());
     if (new Date().getTime() - this.createDate.getTime() - 24*60*60*1000*this.QGP>=0)
       this.state = 2;
     //判断是否今天过期
-    else if (new Date().getDay() - this.createDate.getDay() == this.QGP){
+    else if (new Date().getDate() - this.createDate.getDate() == this.QGP){
       this.state = 1;
     }else {
       this.state = 0;
@@ -80,7 +79,8 @@ public class CoarseCerealsBread extends Bread{
     //state == 1  表示过期当天
     if (this.state==1){
       // 时间上属于过期当天的7:00-9:00
-      if ( (createDate.getHours()>6 && createDate.getHours()<9) || createDate.getHours()==9 && createDate.getMinutes()==0)
+      System.out.println(createDate.getHours());
+      if ( (new Date().getHours()>6 && new Date().getHours()<9) || new Date().getHours()==9 && new Date().getMinutes()==0)
         return 0.0;
     }
     return this.price;

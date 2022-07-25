@@ -74,8 +74,7 @@ class CoarseCerealsBreadTest {
     //计算实际价格前更新面包状态
     breadA.setState();
     breadB.setState();
-
-    System.out.println("面包A的实际价格为: "+breadA.getPrice());
-    System.out.println("面包B的实际价格为: "+breadB.getPrice());
+    System.out.println("面包A的实际价格为: "+breadA.getPrice()+" 状态为:"+breadA.getState());
+    System.out.println("面包B的实际价格为: "+breadB.getPrice()+" 状态为:"+breadB.getState());
   }
 }
