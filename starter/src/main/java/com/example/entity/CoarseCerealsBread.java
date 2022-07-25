@@ -64,7 +64,7 @@ public class CoarseCerealsBread extends Bread{
    * @return double
    */
   @Override
-  double getPrice() throws Exception {
+  public double getPrice() throws Exception {
     if (this.state==2)
       throw new Exception("状态异常！");
     //state == 1  表示过期当天
