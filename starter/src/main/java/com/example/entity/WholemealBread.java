@@ -19,6 +19,14 @@ public class WholemealBread extends Bread{
   int QGP;
   Date createDate;
 
+  public WholemealBread() {
+    this.name = "全麦面包";
+    this.price = 12;
+    this.state = 0;
+    this.QGP = 2;
+    this.createDate = new Date();
+  }
+
   public String getName() {
     return name;
   }
@@ -35,8 +43,8 @@ public class WholemealBread extends Bread{
     return state;
   }
 
-  public void setState(int state) {
-    this.state = state;
+  public void setState() {
+    this.state = updateState(this.createDate,this.QGP);
   }
 
   public Date getCreateDate() {
@@ -48,7 +56,13 @@ public class WholemealBread extends Bread{
   }
 
   @Override
-  double getPrice() {
-    return 0;
+  double getPrice() throws Exception {
+    if (this.state==2)
+      throw new Exception("状态异常！");
+    //过期当天半价销售
+    if (this.state==1)
+      return this.price/2.0;
+    //正常价格
+    return this.price;
   }
 }
