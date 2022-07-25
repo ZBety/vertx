@@ -11,12 +11,5 @@ import java.util.Date;
  * @Version 1.0
  */
 public abstract class Bread {
-    String name;
-    double price;
-    int type;
-    int state;
-    Date createDate;
-
-  abstract double getPrice();
-
+    abstract double getPrice() throws Exception;
 }
