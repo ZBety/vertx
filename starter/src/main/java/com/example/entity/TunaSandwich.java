@@ -24,7 +24,7 @@ public class TunaSandwich extends Bread{
     this.price = 12.00;
     this.state = 0;
     this.QGP = 1;
-    this.createDate = createDate;
+    this.createDate = new Date();
   }
 
   public String getName() {
@@ -43,8 +43,8 @@ public class TunaSandwich extends Bread{
     return state;
   }
 
-  public void setState(int state) {
-    this.state = state;
+  public void setState() {
+    this.state = updateState(this.createDate,this.QGP);
   }
 
   public Date getCreateDate() {
@@ -56,8 +56,10 @@ public class TunaSandwich extends Bread{
   }
 
   @Override
-  double getPrice() {
-
-    return 0;
+  double getPrice() throws Exception {
+    if (this.state==2)
+      throw new Exception("状态异常！");
+    //无论过期当天还是没过期都是原价
+    return this.price;
   }
 }

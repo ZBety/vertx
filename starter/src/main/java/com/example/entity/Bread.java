@@ -12,4 +12,16 @@ import java.util.Date;
  */
 public abstract class Bread {
     abstract double getPrice() throws Exception;
+  public int updateState(Date time,int QGP) {
+    //用时间戳来计算是否过期
+    //当前时间-生产时间-保质期>=0 表示过期了
+    if (new Date().getTime() - time.getTime() - 24*60*60*1000*QGP>=0)
+      return 2;
+      //判断是否今天过期
+    else if (new Date().getDate() - time.getDate() == QGP){
+      return 1;
+    }else {
+      return 0;
+    }
+  }
 }
